@@ -22,12 +22,15 @@ public class Screen extends JFrame implements ActionListener {
 
         add( jsp, BorderLayout.CENTER );
 
-        //Se crea un boton para abrir el archivo
-        JButton btn = new JButton( "Abrir" );
-        btn.addActionListener( this );
-        //btn.setIcon( new ImageIcon( getClass().getResource( "Abrir.png" ) ) );
+        //Se crea un boton para cargar el archivo
+        JButton btn_1 = new JButton( "Cargar" );
+        btn_1.addActionListener( this );
 
-        add( btn, BorderLayout.NORTH );
+        //Se crea un boton para buscar en el archivo
+        JButton btn_2 = new JButton( "Buscar palabras" );
+        btn_2.addActionListener( this );
+        add( btn_1, BorderLayout.NORTH );
+        add( btn_2, BorderLayout.AFTER_LAST_LINE);
 
         //Tamaño de la ventana
         setSize( 500, 500 );
@@ -42,17 +45,17 @@ public class Screen extends JFrame implements ActionListener {
     //------------------------------Action Performed-------------------------------//
     public void actionPerformed( ActionEvent e ){
         JButton btn = (JButton)e.getSource();
-        if( btn.getText().equals( "Abrir" ) )
+        if( btn.getText().equals( "Cargar" ) )
         {
-            if( abrirArchivo == null ) abrirArchivo = new JFileChooser();
-            //Con esto solamente podamos abrir archivos
-            abrirArchivo.setFileSelectionMode( JFileChooser.FILES_ONLY );
+            if( cargarArchivo == null ) cargarArchivo = new JFileChooser();
+            //Con esto solamente podamos cargar archivos
+            cargarArchivo.setFileSelectionMode( JFileChooser.FILES_ONLY );
 
-            int seleccion = abrirArchivo.showOpenDialog( this );
+            int seleccion = cargarArchivo.showOpenDialog( this );
 
             if( seleccion == JFileChooser.APPROVE_OPTION )
             {
-                File f = abrirArchivo.getSelectedFile();
+                File f = cargarArchivo.getSelectedFile();
                 try
                 {
                     String nombre = f.getName();
@@ -112,7 +115,7 @@ public class Screen extends JFrame implements ActionListener {
     }
 
     JTextPane txp;
-    JFileChooser abrirArchivo;
+    JFileChooser cargarArchivo;
 }
 
 
