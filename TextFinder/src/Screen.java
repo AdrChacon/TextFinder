@@ -70,9 +70,51 @@ public class Screen extends JFrame implements ActionListener {
         }
     }
     //-----------------------------------------------------------------------------//
+//-------------------------Se obtiene el contenido del Archivo----------------//
+    public String getArchivo( String ruta ){
+        FileReader fr = null;
+        BufferedReader br = null;
+        //Cadena de texto donde se guardara el contenido del archivo
+        String contenido = "";
+        try
+        {
+            //ruta puede ser de tipo String o tipo File
+            fr = new FileReader( ruta );
+            br = new BufferedReader( fr );
 
+            String linea;
+            //Obtenemos el contenido del archivo linea por linea
+            while( ( linea = br.readLine() ) != null ){
+                contenido += linea + "\n";
+            }
 
+        }catch( Exception e ){  }
+        //finally se utiliza para que si todo ocurre correctamente o si ocurre
+        //algun error se cierre el archivo que anteriormente abrimos
+        finally
+        {
+            try{
+                br.close();
+            }catch( Exception ex ){}
+        }
+        return contenido;
+    }
+    //-----------------------------------------------------------------------------//
 
+    public static void main( String[] arg ){
+        try
+        {
+            //Cambiamos el Look&Feel
+            JFrame.setDefaultLookAndFeelDecorated( true );
+            UIManager.setLookAndFeel( new com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel() );
+        }catch( Exception e ){}
+        new Screen();
+    }
+
+    JTextPane txp;
+    JFileChooser abrirArchivo;
 }
+
+
 
 
