@@ -1,4 +1,5 @@
-public class BinaryThree {
+package estructuras;
+public class BinaryTree {
 
     public static class Nodo {
         Nodo(String element) {

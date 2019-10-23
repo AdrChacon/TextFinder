@@ -1,3 +1,4 @@
+package interfaz;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -109,7 +110,7 @@ public class Screen extends JFrame implements ActionListener {
         {
             //Cambiamos el Look&Feel
             JFrame.setDefaultLookAndFeelDecorated( true );
-            UIManager.setLookAndFeel( new com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel() );
+            //UIManager.setLookAndFeel( new com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel() );
         }catch( Exception e ){}
         new Screen();
     }

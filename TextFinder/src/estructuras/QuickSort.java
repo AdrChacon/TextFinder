@@ -1,3 +1,4 @@
+package estructuras;
 public class QuickSort  {
     private int[] numbers;
     private int number;

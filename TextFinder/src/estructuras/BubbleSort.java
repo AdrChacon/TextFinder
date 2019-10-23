@@ -1,3 +1,4 @@
+package estructuras;
 public class BubbleSort {
     public static void bubble_srt(int array[]) {
         int n = array.length;

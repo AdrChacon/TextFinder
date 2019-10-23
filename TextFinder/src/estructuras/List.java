@@ -1,7 +1,8 @@
+package estructuras;
 /**
  * Clase para crear una lista enlazada simple
  */
-public class Mi_Lista<T>{
+public class List<T>{
 
     private Nodo<T> cabeza;
     private int largo;
