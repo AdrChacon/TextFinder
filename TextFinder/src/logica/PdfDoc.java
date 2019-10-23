@@ -13,6 +13,9 @@ public class PdfDoc extends Documento{
 		readDocument();
 	}
 	
+	/**
+	 * Lectura de archivos pdf. Este código fue tomado de: https://www.mkyong.com/java/pdfbox-how-to-read-pdf-file-in-java/
+	 */
 	public void readDocument() {
 		try (PDDocument doc = PDDocument.load(new File(this.path.toString()))) {
 			PDFTextStripperByArea stripper = new PDFTextStripperByArea();
