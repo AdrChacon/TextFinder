@@ -1,5 +1,8 @@
 package interfaz;
 
+import java.util.ArrayList;
+
+import estructuras.BinaryTree;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
@@ -10,17 +13,62 @@ import logica.Documento;
 
 public class ScreenController {
 
-    
-    private TableColumn<Documento, Double> sizeColumn;
-    private MenuItem importFilesMenuItem;
-    private MenuItem sizeSort;
-    private TextField searchField;
-    private MenuItem dateSort;
-    private TableView<Documento> libraryTable;
-    private TableColumn<?, ?> dateColumn;
-    private MenuItem nameSort;
-    private Button textFindButton;
-    private TableColumn<Documento, String> fileNameColumn;
+	@FXML
+	private TableColumn<Documento, Double> sizeColumn;
 
+	@FXML
+	private MenuItem importFilesMenuItem;
+
+	@FXML
+	private MenuItem sizeSort;
+
+	@FXML
+	private TextField searchField;
+
+	@FXML
+	private MenuItem dateSort;
+
+	@FXML
+	private TableView<Documento> libraryTable;
+
+	@FXML
+	private TableColumn<?, ?> dateColumn;
+
+	@FXML
+	private MenuItem nameSort;
+
+	@FXML
+	private Button textFindButton;
+
+	@FXML
+	private TableColumn<Documento, String> fileNameColumn;
+
+	private ArrayList filesList;
+	private BinaryTree wordTree;
+
+	public void initialize() {
+		
+	}
+	
+	@FXML
+	public void importFiles() {
+		
+
+	}
+
+	@FXML
+	public void sortBySize() {
+
+	}
+
+	@FXML
+	public void sortByName() {
+
+	}
+
+	@FXML
+	public void sortByDate() {
+
+	}
 
 }
