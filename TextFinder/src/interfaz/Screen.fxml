@@ -7,12 +7,13 @@
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="interfaz.ScreenController">
    <children>
-      <HBox prefHeight="101.0" prefWidth="600.0" VBox.vgrow="ALWAYS">
+      <HBox prefHeight="19.0" prefWidth="1024.0" VBox.vgrow="ALWAYS">
          <children>
-            <MenuBar HBox.hgrow="ALWAYS">
+            <MenuBar prefHeight="25.0" prefWidth="135.0" HBox.hgrow="ALWAYS">
               <menus>
                 <Menu mnemonicParsing="false" text="File">
                   <items>
+                        <MenuItem fx:id="openFileMenuItem" mnemonicParsing="false" onAction="#openSelectedFile" text="Open Selected File" />
                         <MenuItem fx:id="importFilesMenuItem" mnemonicParsing="false" onAction="#importFiles" text="Import Files" />
                         <SeparatorMenuItem mnemonicParsing="false" />
                     <MenuItem mnemonicParsing="false" text="Exit" />
@@ -37,12 +38,12 @@
               </menus>
             </MenuBar>
             <Separator orientation="VERTICAL" prefHeight="200.0" HBox.hgrow="ALWAYS" />
-            <Region prefHeight="101.0" prefWidth="645.0" HBox.hgrow="ALWAYS" />
-            <Separator orientation="VERTICAL" prefHeight="200.0" HBox.hgrow="ALWAYS" />
-            <VBox prefHeight="100.0" prefWidth="232.0">
+            <Region prefHeight="0.0" prefWidth="406.0" HBox.hgrow="ALWAYS" />
+            <Separator orientation="VERTICAL" prefHeight="200.0" />
+            <VBox prefHeight="101.0" prefWidth="478.0">
                <children>
-                  <Button fx:id="textFindButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="238.0" text="Find" />
-                  <TextField fx:id="searchField" alignment="CENTER" prefHeight="74.0" prefWidth="232.0" promptText="Input words to search" VBox.vgrow="ALWAYS" />
+                  <Button fx:id="textFindButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="477.0" text="Find" />
+                  <TextField fx:id="searchField" alignment="TOP_LEFT" prefHeight="31.0" prefWidth="458.0" promptText="Input words to search" VBox.vgrow="ALWAYS" />
                </children>
             </VBox>
          </children>

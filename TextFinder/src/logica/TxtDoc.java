@@ -3,6 +3,7 @@ package logica;
 
 import java.nio.file.Path;
 import java.io.File;
+import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
@@ -15,7 +16,7 @@ public class TxtDoc extends Documento {
 	
 	public void readDocument() {
 		try {
-		this.content = Files.readString(this.path);
+		this.content = Files.readString(this.path, Charset.defaultCharset());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

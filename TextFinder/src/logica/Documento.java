@@ -17,8 +17,12 @@ public abstract class Documento {
 		this.fileSize = this.megabyteSize();
 	}
 	
+	public Path getPath() {
+		return this.path;
+	}
+	
 	public double megabyteSize() {
-		return ((this.file.length()/1024)/1024);
+		return (this.file.length()/1024);
 		
 	}
 	
