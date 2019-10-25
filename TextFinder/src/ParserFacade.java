@@ -10,17 +10,17 @@ public class ParserFacade {
         String[][] content;
         switch (extension){
             case "pdf":
-                lines=PdfReader.pdfReader(file.getPath());
+                lines= PdfReader.pdfReader(file.getPath());
                 content= toBidemensionalArray(lines);
                 updateTree(file,content);
                 return content;
             case "txt":
-                lines=TxtReader.txtReader(file.getPath());
+                lines= TxtReader.txtReader(file.getPath());
                 content= toBidemensionalArray(lines);
                 updateTree(file,content);
                 return content;
             case "docx":
-                lines=DocxReader.docxReader(file.getPath());
+                lines= DocxReader.docxReader(file.getPath());
                 content= toBidemensionalArray(lines);
                 updateTree(file,content);
                 return content;

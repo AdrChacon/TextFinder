@@ -29,7 +29,7 @@ public class Tree {
 
     }
 
-    private void addOcurrence(WordOcurrences wordOcurrences,File document, int lineNumber, int linePos){
+    private void addOcurrence(WordOcurrences wordOcurrences, File document, int lineNumber, int linePos){
         wordOcurrences.getDocuments().add(document);
         wordOcurrences.getLineNumber().add(lineNumber);
         wordOcurrences.getLinePos().add(linePos);

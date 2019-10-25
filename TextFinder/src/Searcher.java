@@ -4,7 +4,6 @@ import java.nio.file.Files;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
 
-
 public class Searcher {
 
     Tree tree;
@@ -12,7 +11,7 @@ public class Searcher {
     Controller controller;
 
     public Searcher(Controller controller){
-        this.tree=Tree.getInstance();
+        this.tree= Tree.getInstance();
         this.controller=controller;
     }
 
