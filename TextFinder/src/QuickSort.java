@@ -1,38 +1,60 @@
-public class QuickSort  {
-    private int[] numbers;
-    private int number;
-    public void sort(int[] values) {
-        if (values ==null || values.length==0){
+public class QuickSort {
+
+    public static void quickSort(DocumentsDoublyLinkedList dl, int beginning, int end){
+        if (dl.isEmpty() || dl.getLength() == 0)
+            AlertBoxes.displayAlertBox("Exception", "Empty library");
+        if (beginning >= end)
+            return;
+        // pick the pivot
+        Documents pivot = dl.get(beginning + (end - beginning) / 2);
+
+        // make left < pivot and right > pivot
+        int i = beginning, j = end;
+        while (i <= j) {
+            while (dl.get(i).getName().compareTo(pivot.getName()) < 0) {
+                i++;
+            }
+
+            while (dl.get(j).getName().compareTo(pivot.getName()) > 0) {
+                j--;
+            }
+
+            if (i <= j) {
+                swap(dl.get(i), dl.get(j), dl);
+                i++;
+                j--;
+            }
+        }
+
+        // recursively sort two sub parts
+        if (beginning < j)
+            quickSort(dl, beginning, j);
+
+        if (end > i)
+            quickSort(dl, i, end);
+    }
+
+
+    public static void swap(Documents a, Documents b, DocumentsDoublyLinkedList dl){
+        if (dl.isEmpty() || dl.first == dl.last){
             return;
         }
-        this.numbers = values;
-        number = values.length;
-        quicksort(0, number - 1);
-    }
-    private void quicksort(int low, int high) {
-        int i = low, j = high;
-        int pivot = numbers[low + (high-low)/2];
-        while (i <= j) {
-            while (numbers[i] < pivot) {
-                i++;
-            }
-            while (numbers[j] > pivot) {
-                j--;
-            }
-            if (i <= j) {
-                exchange(i, j);
-                i++;
-                j--;
-            }
+        else{
+            String aText = a.getText();
+            String aName = a.getName();
+            String aSize = a.getSize();
+            String aDate = a.getDate();
+
+            a.setText(b.getText());
+            a.setName(b.getName());
+            a.setSize(b.getSize());
+            a.setDate(b.getDate());
+
+            b.setText(aText);
+            b.setName(aName);
+            b.setSize(aSize);
+            b.setDate(aDate);
         }
-        if (low < j)
-            quicksort(low, j);
-        if (i < high)
-            quicksort(i, high);
-    }
-    private void exchange(int i, int j) {
-        int temp = numbers[i];
-        numbers[i] = numbers[j];
-        numbers[j] = temp;
     }
 }
+
