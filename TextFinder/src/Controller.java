@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
@@ -215,6 +216,21 @@ public class Controller {
         }
         System.out.println(files);
         return files;
+    }
+
+    private void updateResultTable(){
+        textColumn.setCellValueFactory(new PropertyValueFactory<>("text"));
+        nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        sizeColumn.setCellValueFactory(new PropertyValueFactory<>("size"));
+        dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
+
+        textColumn.setSortable(false);
+        nameColumn.setSortable(false);
+        sizeColumn.setSortable(false);
+        dateColumn.setSortable(false);
+
+        resultsTable.setItems(getIndexedDocuments(dl));
+
     }
 
 }
