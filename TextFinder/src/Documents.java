@@ -7,4 +7,12 @@ public class Documents {
 
     protected Documents next = null;
     protected Documents prev = null;
+
+    public Documents(String text, String name, String size, String date) {
+        this.text = text;
+        this.name = name;
+        this.size = size;
+        this.date = date;
+        this.realSize = toInt(this.size);
+    }
 }
