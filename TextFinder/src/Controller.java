@@ -1,5 +1,7 @@
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 
 public class Controller {
 
@@ -57,4 +59,19 @@ public class Controller {
     Button textDownBtn;
     @FXML
     Button nameUpBtn;
+
+    @FXML
+    Button sizeUpBtn;
+    @FXML
+    Button sizeDownBtn;
+    @FXML
+    Button dateUpBtn;
+    @FXML
+    Button dateDownBtn;
+
+    @FXML
+    AnchorPane searchPane;
+
+    @FXML
+    VBox libraryPane;
 }
