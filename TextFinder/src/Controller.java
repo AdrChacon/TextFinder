@@ -1,10 +1,15 @@
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -187,6 +192,29 @@ public class Controller {
                 contents.add(result);
             }
         }
+    }
+    private void ButtonSearch(MouseEvent e){
+        searcher.search(inputField.getText());
+    }
+
+    private void ListViewClic(MouseEvent e) {
+        int index = namePane.getSelectionModel().getSelectedIndex();
+        try {
+            Desktop.getDesktop().open(documentsOnSearchPane[index]);
+            //RandomAccessFile raFile = new RandomAccessFile(documentsOnSearchPane[index], "r");
+            //raFile.seek(500);
+        } catch (IOException | NullPointerException | ArrayIndexOutOfBoundsException ex) {
+            AlertBoxes.displayAlertBox("Error", "File not found");
+        }
+    }
+
+    public ObservableList<Documents> getIndexedDocuments(DocumentsDoublyLinkedList dl){
+        ObservableList<Documents> files = FXCollections.observableArrayList();
+        for(int i = 0; i < dl.getLength(); i++){
+            files.add(dl.get(i));
+        }
+        System.out.println(files);
+        return files;
     }
 
 }
