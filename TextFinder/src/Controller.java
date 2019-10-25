@@ -3,6 +3,9 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
+import java.io.File;
+import java.util.ArrayList;
+
 public class Controller {
 
     @FXML
@@ -74,4 +77,16 @@ public class Controller {
 
     @FXML
     VBox libraryPane;
+
+    Searcher searcher;
+
+    File[] documentsOnSearchPane;
+
+    ArrayList<File> documents;
+
+    ArrayList<String[][]> contents;
+
+    DocumentsDoublyLinkedList dl = new DocumentsDoublyLinkedList();
+
+    public Controller(){}
 }
