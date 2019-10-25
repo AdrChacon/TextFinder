@@ -1,3 +1,5 @@
+import java.io.File;
+
 public class Tree {
 
     private Node root= null;
