@@ -129,6 +129,7 @@ public class Controller {
             }
             this.updateResultTable();
         }
+    }
 
         //reinicio de panel
         private void clearSearchPane(){
@@ -137,7 +138,7 @@ public class Controller {
             datePane.getItems().clear();
             sizePane.getItems().clear();
         }
-//add documentos
+        //add documentos
         public void ButtonPlusAction(MouseEvent event){
             FileChooser fc = new FileChooser();
             fc.getExtensionFilters().addAll(
@@ -156,5 +157,14 @@ public class Controller {
             }
         }
 
+    private void ButtonMinus(MouseEvent event) {
+        int index = libraryListView.getSelectionModel().getSelectedIndex();
+        if (index >= 0){
+            libraryListView.getItems().remove(index);
+            this.documents.remove(index);
+        }
     }
+
 }
+
+
