@@ -97,7 +97,7 @@ public class Controller {
 
     ArrayList<String[][]> contents;
 
-    DocumentsDoublyLinkedList dl = new DocumentsDoublyLinkedList();
+    Mi_Lista dl = new Mi_Lista();
 
     public Controller(){}
 
@@ -209,7 +209,7 @@ public class Controller {
         }
     }
 
-    public ObservableList<Documents> getIndexedDocuments(DocumentsDoublyLinkedList dl){
+    public ObservableList<Documents> getIndexedDocuments(Mi_Lista dl){
         ObservableList<Documents> files = FXCollections.observableArrayList();
         for(int i = 0; i < dl.getLength(); i++){
             files.add(dl.get(i));

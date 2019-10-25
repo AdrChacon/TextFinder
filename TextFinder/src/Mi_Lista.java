@@ -1,129 +1,121 @@
-/**
- * Clase para crear una lista enlazada simple
- */
-public class Mi_Lista<T>{
+import java.net.MalformedURLException;
 
-    private Nodo<T> cabeza;
-    private int largo;
+public class Mi_Lista<>{
 
-    private static class Nodo<T>{
+    protected Documents first;
+    protected Documents last;
+    private int length;
 
-        public Nodo<T> siguiente = null;
-        public T archivo;
-        public Nodo(T archivo) {
-            this.archivo = archivo;
-        }
+    public Mi_Lista() {
+        this.first = null;
     }
 
-
-    public void InsertarInicio(T archivo){
-        Nodo<T> nodo = new Nodo<T>(archivo);
-        nodo.siguiente = cabeza;
-        cabeza = nodo;
-        largo++;
+    public void clearList(){
+        this.first = null;
+        this.length = 0;
     }
 
-
-    public void InsertarFinal(T archivo){
-        Nodo<T> nodo = new Nodo<T>(archivo);
-        if (cabeza == null){
-            InsertarInicio(archivo);
-        }else{
-            Nodo<T> puntero = cabeza;
-            while(puntero.siguiente != null){
-                puntero = puntero.siguiente;
-            }
-            puntero.siguiente = nodo;
-            largo++;
-        }
+    public boolean isEmpty(){
+        return this.first == null;
     }
 
-
-    public void Insertar(int indice,T archivo){
-        Nodo<T> nodo = new Nodo<T>(archivo);
-        if (cabeza == null || indice == 0){
-            this.InsertarInicio(archivo);
-        }else{
-            Nodo<T> puntero = cabeza;
-            int contador = 0;
-            while(contador < indice && puntero.siguiente != null){
-                puntero = puntero.siguiente;
-                contador++;
-            }
-            nodo.siguiente = puntero.siguiente;
-            puntero.siguiente = nodo;
-            largo++;
-        }
-    }
-
-
-    public T Obtener(int indice){
-        if(cabeza == null){
+    public Documents get(int index){
+        if (index > this.length-1 || this.first == null || index < 0){
+            System.out.println("Index out of range");
             return null;
-        }else{
-            Nodo<T> puntero = cabeza;
-            int contador = 0;
-            while (contador < indice && puntero.siguiente != null){
-                puntero = puntero.siguiente;
-                contador++;
+        }
+        else{
+            int counter = 0;
+            Documents current = this.first;
+            while(counter < index){
+                current = current.next;
+                counter ++;
             }
-            if(contador != indice){
-                return null;
-            }else{
-                return puntero.archivo;
-            }
+            return current;
         }
     }
 
-
-    public int getLargo(){
-        return largo;
-    }
-
-
-    public void eliminarPrimero(){
-        if (cabeza != null) {
-            Nodo<T> primer = cabeza;
-            cabeza = cabeza.siguiente;
-            primer.siguiente = null;
-            largo--;
+    public void deleteAt(int index){
+        if (index > this.length-1 || this.first == null || index < 0){
+            System.out.println("Index out of range");
         }
-    }
+        else{
+            int counter = 0;
+            Documents current = this.first;
+            while(counter < index){
+                current = current.next;
+                counter ++;
+            }
+            if (current == this.first){
+                Documents after = current.next;
+                after.prev = null;
+                this.first = after;
+            }
+            else if (current == this.last){
+                Documents before = current.prev;
+                before.next = null;
+                this.last = before;
+            } else {
+                Documents before = current.prev;
+                Documents after = current.next;
+                before.next = after;
+                after.prev = before;
 
-
-    public void eliminarUltimo(){
-        if(cabeza != null){
-            if(cabeza.siguiente == null){
-                cabeza = null;
-            }else{
-                Nodo<T> puntero = cabeza;
-                while (puntero.siguiente.siguiente != null){
-                    puntero = puntero.siguiente;
-                }
-                puntero.siguiente = null;
-                largo--;
             }
         }
     }
 
-
-    public void eliminar(int indice){
-        if (cabeza != null){
-            if(indice == 0){
-                this.eliminarPrimero();
-            }else if(indice < largo) {
-                Nodo<T> puntero = cabeza;
-                int contador = 0;
-                while (contador < (indice - 1)) {
-                    puntero = puntero.siguiente;
-                    contador++;
-                }
-                Nodo<T> temp = puntero.siguiente;
-                puntero.siguiente = temp.siguiente;
-                temp.siguiente = null;
-                largo--;
+    public void printList(){
+        if (this.first == null){
+            System.out.println("[]");
+        }
+        else {
+            Documents current = this.first;
+            System.out.print("[");
+            while (current.next != null) {
+                System.out.print(current.getName());
+                System.out.print(", ");
+                current = current.next;
             }
+            System.out.print(current.getName());
+            System.out.println("]");
         }
     }
 
+    public void addLast(Documents addedDoc) throws MalformedURLException {
+        this.length ++;
+        if (this.first == null){
+            this.first = addedDoc;
+            this.last = this.first;
+        }
+        else {
+            Documents newDoc = addedDoc;
+            this.last.next = newDoc;
+            newDoc.prev = this.last;
+            this.last = newDoc;
+        }
+    }
+
+    public void reverseList(){
+        Documents previous = null;
+        //change reference head becomes tail in reversal
+        this.last = this.first;
+        Documents current = this.first;
+        while(current != null){
+            // swap prev and next for the current node
+            previous = current.prev;
+            current.prev = current.next;
+            current.next = previous;
+            // to move to next node current.prev has to be called
+            // as that has reference to next node now
+            current = current.prev;
+        }
+        if(previous != null){
+            this.first = previous.prev;
+        }
+    }
+
+    public int getLength() {
+        return length;
+    }
 }

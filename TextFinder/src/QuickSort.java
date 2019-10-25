@@ -1,6 +1,6 @@
 public class QuickSort {
 
-    public static void quickSort(DocumentsDoublyLinkedList dl, int beginning, int end){
+    public static void quickSort(Mi_Lista dl, int beginning, int end){
         if (dl.isEmpty() || dl.getLength() == 0)
             AlertBoxes.displayAlertBox("Exception", "Empty library");
         if (beginning >= end)
@@ -35,7 +35,7 @@ public class QuickSort {
     }
 
 
-    public static void swap(Documents a, Documents b, DocumentsDoublyLinkedList dl){
+    public static void swap(Documents a, Documents b, Mi_Lista dl){
         if (dl.isEmpty() || dl.first == dl.last){
             return;
         }

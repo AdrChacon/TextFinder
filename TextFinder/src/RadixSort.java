@@ -54,7 +54,7 @@ public class RadixSort {
         return arr;
     }
 
-    public static int[] toIntArray(DocumentsDoublyLinkedList dl){
+    public static int[] toIntArray(Mi_Lista dl){
         int[] result = new int[dl.getLength()-1];
         for(int i = 0; i < dl.getLength(); i++){
             result[i] = dl.get(i).getRealSize();
@@ -62,8 +62,8 @@ public class RadixSort {
         return result;
     }
 
-    public static DocumentsDoublyLinkedList backToDoublyList(int[] result, DocumentsDoublyLinkedList dl) throws MalformedURLException {
-        DocumentsDoublyLinkedList tmpList = dl;
+    public static Mi_Lista backToDoublyList(int[] result, Mi_Lista dl) throws MalformedURLException {
+        Mi_Lista tmpList = dl;
         dl.clearList();
         for(int i = 0; i < result.length; i++){
             for(int j = 0; j < tmpList.getLength(); j++){
