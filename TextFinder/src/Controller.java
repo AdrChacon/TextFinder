@@ -1,11 +1,14 @@
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
 
 import java.io.File;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Controller {
 
@@ -128,11 +131,30 @@ public class Controller {
         }
 
         //reinicio de panel
-        private void clearSearchPane () {
+        private void clearSearchPane(){
             textPane.getItems().clear();
             namePane.getItems().clear();
             datePane.getItems().clear();
             sizePane.getItems().clear();
         }
+//add documentos
+        public void ButtonPlusAction(MouseEvent event){
+            FileChooser fc = new FileChooser();
+            fc.getExtensionFilters().addAll(
+                    new FileChooser.ExtensionFilter("pdf files", "*.pdf"),
+                    new FileChooser.ExtensionFilter("docx files", "*.docx"),
+                    new FileChooser.ExtensionFilter("txt files", "*.txt"));
+            List<File> selectedFiles = fc.showOpenMultipleDialog(null);
+
+            if (selectedFiles != null){
+                for(int i = 0; i < selectedFiles.size(); i++){
+                    libraryListView.getItems().add(selectedFiles.get(i).getName());
+                    this.documents.addAll(selectedFiles);
+                }
+            } else {
+                AlertBoxes.displayResultAlertBox("Exception", "Invalid file");
+            }
+        }
+
     }
 }
