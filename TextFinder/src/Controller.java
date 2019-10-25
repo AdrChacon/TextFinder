@@ -1,47 +1,52 @@
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 public class Controller {
-    public class Controller {
 
-        @FXML
-        Button indexBtn;
+    @FXML
+    Button indexBtn;
 
-        @FXML
-        Button refreshBtn;
+    @FXML
+    Button refreshBtn;
 
-        @FXML
-        Button addBtn;
+    @FXML
+    Button addBtn;
 
-        @FXML
-        Button deleteBtn;
+    @FXML
+    Button deleteBtn;
 
-        @FXML
-        Button searchBtn;
+    @FXML
+    Button searchBtn;
 
-        @FXML
-        TextField inputField;
+    @FXML
+    TextField inputField;
 
-        @FXML
-        ListView textPane;
+    @FXML
+    ListView textPane;
 
-        @FXML
-        ListView namePane;
+    @FXML
+    ListView namePane;
 
-        @FXML
-        ListView sizePane;
+    @FXML
+    ListView sizePane;
 
-        @FXML
-        ListView datePane;
+    @FXML
+    ListView datePane;
 
-        @FXML
-        ListView libraryListView;
+    @FXML
+    ListView libraryListView;
 
 
-        @FXML
-        TableView<Documents> resultsTable;
+    @FXML
+    TableView<Documents> resultsTable;
 
-    }
+    //tabla
+    @FXML
+    TableColumn textColumn;
+    @FXML
+    TableColumn nameColumn;
+    @FXML
+    TableColumn sizeColumn;
+    @FXML
+    TableColumn dateColumn;
+}
