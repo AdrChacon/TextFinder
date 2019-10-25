@@ -6,6 +6,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -162,6 +163,29 @@ public class Controller {
         if (index >= 0){
             libraryListView.getItems().remove(index);
             this.documents.remove(index);
+        }
+    }
+
+    public List<File> getDocuments() {
+        return documents;
+    }
+
+    public ArrayList<String[][]> getContents() {
+        return contents;
+    }
+
+    private void ButtonIndex(MouseEvent event){
+        contents=new ArrayList<>();
+        Tree tree= Tree.getInstance();
+        tree.clear();
+        for(File doc:this.documents){
+            try {
+                contents.add(ParserFacade.parse(doc));
+            } catch ( IOException e) {
+                AlertBoxes.displayAlertBox("Error", "An error has ocurred while reading "+doc.getName());
+                String[][] result={{""}};
+                contents.add(result);
+            }
         }
     }
 
