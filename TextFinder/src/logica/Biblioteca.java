@@ -77,7 +77,11 @@ public class Biblioteca {
 		} else if (type.equals("pdf")) {
 			Documento doc = new PdfDoc(file.getPath());
 			fileList.add(doc);
-		} else {
+		} else if(type.equals("docx")){
+			Documento doc = new DocxDoc(file.getPath());
+			fileList.add(doc);
+		}
+		else {
 			System.out.println("File type not supported");
 		}
 	}
