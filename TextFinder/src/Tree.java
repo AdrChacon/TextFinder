@@ -1,4 +1,4 @@
-public class tree {
+public class Tree {
 
     private Node root= null;
     private static Tree instance;

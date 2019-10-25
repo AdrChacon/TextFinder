@@ -9,6 +9,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
+import org.apache.pdfbox.debugger.ui.textsearcher.Searcher;
 
 import java.awt.*;
 import java.io.File;

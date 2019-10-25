@@ -1,6 +1,6 @@
 import java.net.MalformedURLException;
 
-public class Mi_Lista<>{
+public class Mi_Lista{
 
     protected Documents first;
     protected Documents last;
