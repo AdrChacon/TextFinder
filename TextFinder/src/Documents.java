@@ -1,3 +1,5 @@
+import javafx.scene.input.MouseEvent;
+
 public class Documents {
     private String text;
     private String name;
@@ -34,5 +36,40 @@ public class Documents {
             }
         }
         return result;
+    }
+
+    public String getText() { return text; }
+
+    public void setText(String text) { this.text = text; }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public int getRealSize() { return realSize; }
+
+    public void setRealSize(int realSize) { this.realSize = realSize; }
+
+    private void ButtonUp(MouseEvent event) {
     }
 }
