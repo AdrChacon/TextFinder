@@ -49,4 +49,12 @@ public class Controller {
     TableColumn sizeColumn;
     @FXML
     TableColumn dateColumn;
+
+    //ordenamiento
+    @FXML
+    Button textUpBtn;
+    @FXML
+    Button textDownBtn;
+    @FXML
+    Button nameUpBtn;
 }
