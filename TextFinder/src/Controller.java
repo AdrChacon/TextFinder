@@ -102,6 +102,9 @@ public class Controller {
 
     public Controller(){}
 
+    /**
+     * Este método se llama al inciar el programa, crea las acciones y eventos necesarios.
+     */
     @FXML
     public void initialize(){
         documents = new ArrayList<>();
@@ -125,7 +128,14 @@ public class Controller {
         sizeColumn.setResizable(false);
         dateColumn.setResizable(false);
     }
-
+    /**
+     * Actualiza la tabla de resultados con los archivos encontrados
+     * @param documents
+     * @param text
+     * @param names
+     * @param dates
+     * @param sizes
+     */
     public void updateSearchPane(ArrayList<File> documents,String[] text, String[] names, String[] dates, String [] sizes) {
         this.clearSearchPane();
         this.documentsOnSearchPane = documents.toArray(new File[documents.size()]);
@@ -139,14 +149,18 @@ public class Controller {
         }
     }
 
-        //reinicio de panel
+    /**
+     * Reinicia el panel
+     */
         private void clearSearchPane(){
             textPane.getItems().clear();
             namePane.getItems().clear();
             datePane.getItems().clear();
             sizePane.getItems().clear();
         }
-        //add documentos
+        /**
+         *  Permite añadir documentos
+         */
         public void ButtonPlusAction(MouseEvent event){
             FileChooser fc = new FileChooser();
             fc.getExtensionFilters().addAll(
@@ -165,6 +179,10 @@ public class Controller {
             }
         }
 
+        /**
+         * Permite eliminar documentos
+         * @param event
+         */
     private void ButtonMinus(MouseEvent event) {
         int index = libraryListView.getSelectionModel().getSelectedIndex();
         if (index >= 0){
@@ -173,14 +191,25 @@ public class Controller {
         }
     }
 
+    /**
+     * Obtiene la lista de documentos
+     * @return
+     */
     public List<File> getDocuments() {
         return documents;
     }
-
+    /**
+     * Retorna los contenidos de los textos en una lista
+     * @return
+     */
     public ArrayList<String[][]> getContents() {
         return contents;
     }
 
+    /**
+     * Indiza los documetos agregados
+     * @param event
+     */
     private void ButtonIndex(MouseEvent event){
         contents=new ArrayList<>();
         Tree tree= Tree.getInstance();
@@ -195,10 +224,18 @@ public class Controller {
             }
         }
     }
+    /**
+     * Inicia una búsqueda
+     * @param e
+     */
     private void ButtonSearch(MouseEvent e){
         searcher.search(inputField.getText());
     }
 
+    /**
+     * Abre el archivo seleccionado
+     * @param e
+     */
     private void ListViewClic(MouseEvent e) {
         int index = namePane.getSelectionModel().getSelectedIndex();
         try {
@@ -210,6 +247,11 @@ public class Controller {
         }
     }
 
+    /**
+     * Retorna una lista observable de los documentos indizados
+     * @param dl
+     * @return
+     */
     public ObservableList<Documents> getIndexedDocuments(Mi_Lista dl){
         ObservableList<Documents> files = FXCollections.observableArrayList();
         for(int i = 0; i < dl.getLength(); i++){
@@ -219,6 +261,9 @@ public class Controller {
         return files;
     }
 
+    /**
+     * Actualiza la tabla de resultados con los archivos encontrados
+     */
     private void updateResultTable(){
         textColumn.setCellValueFactory(new PropertyValueFactory<>("text"));
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -233,12 +278,19 @@ public class Controller {
         resultsTable.setItems(getIndexedDocuments(dl));
 
     }
+    /**
+     * Ordena según los nombres de los archivos
+     * @param e
+     */
     private void buttonNameUp(MouseEvent e){
         resultsTable.getItems().clear();
         QuickSort.quickSort(dl, 0, dl.getLength()-1);
         this.updateResultTable();
     }
-
+    /**
+     * Ordena según los nombres de los archivos
+     * @param e
+     */
     private void buttonNameDown(MouseEvent e){
         resultsTable.getItems().clear();
         QuickSort.quickSort(dl, 0, dl.getLength()-1);
@@ -246,12 +298,20 @@ public class Controller {
         this.updateResultTable();
     }
 
+    /**
+     * Ordena según la fecha de los archivos
+     * @param e
+     */
     private void buttonDateUp(MouseEvent e){
         resultsTable.getItems().clear();
         BubbleSort.bubbleSort(dl);
         this.updateResultTable();
     }
 
+    /**
+     * Ordena según la fecha de los archivos
+     * @param e
+     */
     private void buttonDateDown(MouseEvent e) {
         resultsTable.getItems().clear();
         BubbleSort.bubbleSort(dl);
