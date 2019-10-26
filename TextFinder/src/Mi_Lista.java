@@ -1,24 +1,53 @@
 import java.net.MalformedURLException;
 
+/**
+ * Esta clase corresponde a una lista doblemente enlazada que almacena los documentos agregados
+ *
+ */
 public class Mi_Lista{
 
+	/**
+	 * El primer elemento de la lista
+	 */
     protected Documents first;
+    /**
+     * El ultimo elemento de la lista
+     */
     protected Documents last;
+    /**
+     * El tamaño de la lista
+     */
     private int length;
 
+    /**
+     * Crea una lista vacia
+     */
     public Mi_Lista() {
         this.first = null;
     }
 
+    /**
+     * Elimina los contenidos de la lista
+     */
     public void clearList(){
         this.first = null;
+        this.last = null;
         this.length = 0;
     }
 
+    /**
+     * Determina si la lista está vacía
+     * @return boolean Vacia
+     */
     public boolean isEmpty(){
         return this.first == null;
     }
 
+    /**
+     * Retorna el documento en el indice determinado
+     * @param index
+     * @return Documents Documento
+     */
     public Documents get(int index){
         if (index > this.length-1 || this.first == null || index < 0){
             System.out.println("Index out of range");
@@ -35,6 +64,10 @@ public class Mi_Lista{
         }
     }
 
+    /**
+     * Elimina el documento en el indice determinado
+     * @param index
+     */
     public void deleteAt(int index){
         if (index > this.length-1 || this.first == null || index < 0){
             System.out.println("Index out of range");
@@ -82,6 +115,11 @@ public class Mi_Lista{
         }
     }
 
+    /**
+     * Agrega un elemento al final de la lista
+     * @param addedDoc
+     * @throws MalformedURLException
+     */
     public void addLast(Documents addedDoc) throws MalformedURLException {
         this.length ++;
         if (this.first == null){
@@ -96,6 +134,9 @@ public class Mi_Lista{
         }
     }
 
+    /**
+     * Invierte la lista
+     */
     public void reverseList(){
         Documents previous = null;
         //change reference head becomes tail in reversal
@@ -115,6 +156,10 @@ public class Mi_Lista{
         }
     }
 
+    /**
+     * Retorna el tamaño de la lista
+     * @return int Tamaño
+     */
     public int getLength() {
         return length;
     }

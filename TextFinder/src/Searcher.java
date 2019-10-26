@@ -6,15 +6,30 @@ import java.util.ArrayList;
 
 public class Searcher {
 
+	/**
+	 * Arbol de palabras
+	 */
     Tree tree;
 
+    /**
+     * Controlador de la interfaz
+     */
     Controller controller;
 
+    /**
+     * Crea una instancia del buscador de palabras
+     * @param controller
+     */
     public Searcher(Controller controller){
         this.tree= Tree.getInstance();
         this.controller=controller;
     }
 
+    /**
+     * Busca la frase ingresada por el usuario y actualiza la interfaz con los archivos
+     * que contienen dicha frase
+     * @param phrase
+     */
     public void search(String phrase){
         String[] splitPhrase = this.decomposePhrase(phrase);
         if(splitPhrase.length>=1){
@@ -48,6 +63,11 @@ public class Searcher {
         }
     }
 
+    /**
+     * Retorna un arreglo de Strings con los nombres de los documentos encontrados
+     * @param documents
+     * @return String[] Documentos
+     */
     private String[] getNames(ArrayList<File> documents){
         String[] names = new String[documents.size()];
         for (int i = 0; i<documents.size();i++){
@@ -56,6 +76,12 @@ public class Searcher {
         return names;
     }
 
+    /**
+     * Retorna un arreglo de Strings con los tamaños de los documentos encontrados
+     * @param documents
+     * @return
+     * @throws IOException
+     */
     private String[] getSizes(ArrayList<File> documents) throws IOException {
         String[] sizes = new String[documents.size()];
         for (int i = 0; i<documents.size();i++){
@@ -64,6 +90,12 @@ public class Searcher {
         return sizes;
     }
 
+    /**
+     * Retorna un arreglo de Strings con las fechas de lso documentos encontrados
+     * @param documents
+     * @return
+     * @throws IOException
+     */
     private String[] getDates(ArrayList<File> documents) throws IOException {
         String[] dates = new String[documents.size()];
         for (int i = 0; i<documents.size();i++){
@@ -72,11 +104,22 @@ public class Searcher {
         return dates;
     }
 
+    /**
+     * Retorna las instancias de una palabra del arbol
+     * @param word
+     * @return WordOcurrences instancias
+     */
     private WordOcurrences searchWord(String word){
         WordOcurrences ocurrenceList= this.tree.getOcurrences(word);
         return ocurrenceList;
     }
 
+    /**
+     * Retorna las instacias con los documentos en donde se encontro la frase ingresada
+     * @param wordOcurrences
+     * @param phrase
+     * @return
+     */
     public WordOcurrences getRealOcurrences(WordOcurrences wordOcurrences, String[] phrase){
         int size = wordOcurrences.getDocuments().size();
         File document;
@@ -130,6 +173,11 @@ public class Searcher {
         return result;
     }
 
+    /**
+     * Retorna el contexto en el documento de la frase que se buscó
+     * @param wordOcurrences
+     * @return String[] Contexto
+     */
     protected String[] getContext(WordOcurrences wordOcurrences){
         int size = wordOcurrences.getDocuments().size();
         String[] contexts= new String[size];
@@ -139,12 +187,24 @@ public class Searcher {
         return contexts;
     }
 
+    /**
+     * Retorna el texto contenido en un documento
+     * @param document
+     * @return String[] Texto
+     */
     private String[][] getContent(File document){
         int index= controller.getDocuments().indexOf(document);
         String[][] content = controller.getContents().get(index);
         return content;
     }
 
+    /**
+     * Retorna el contexto en el documento de la frase que se buscó
+     * @param document
+     * @param lineNumber
+     * @param linePos
+     * @return String Contexto
+     */
     private String getContext(File document, int lineNumber, int linePos){
         String[][] content =this.getContent(document);
         String context="...";
@@ -164,6 +224,11 @@ public class Searcher {
         return context+"...";
     }
 
+    /**
+     * Descompone la frase ingresada por el usuario para facilitar la busca
+     * @param phrase
+     * @return String[] Frase
+     */
     private String[] decomposePhrase(String phrase){
         String[] split=phrase.split(" ");
         ArrayList<String> noSpacesSplit=new ArrayList<>();

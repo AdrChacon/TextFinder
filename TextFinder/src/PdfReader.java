@@ -4,8 +4,18 @@ import org.apache.pdfbox.text.PDFTextStripperByArea;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * Esta clase permite leer el contenido de archivos de formato .pdf
+ *
+ */
 public class PdfReader {
 
+	/**
+	 * Retorna un String[] con el texto extraído del documento .pdf
+	 * @param path
+	 * @return String[] texto
+	 * @throws IOException
+	 */
     public static String[] pdfReader (String path) throws IOException {
         PDDocument document = PDDocument.load(new File(path));
         if (!document.isEncrypted()) {
