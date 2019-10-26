@@ -1,0 +1,5 @@
+Los números en español: Uno, dos, tres, cuatro, cinco, seis, siete, ocho, nueve, diez, once, doce, trece, catorce, quince, dieciseis, diecisiete, dieciocho, diecinueve, veinte, veintiuno ..., treinta, treinta y uno ..., cuarenta, cuarenta y uno ..., cincuenta, sesenta, ochenta, noventa, cien, doscientos, trescientos, cuatrocientos, quinientos, seiscientos, ochocientos, novecientos, mil, dos mil, tres mil ..., un millon, un billon, un trillon
+
+The numbers in english: One, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve, thirteen, fourteen, fifteen, sixteen, seventeen, eighteen, nineteen, twenty, twenty one ..., thirty, thirty one..., forty, forty one ..., fifty, sixty, seventy, eighty, ninety, one hundred, two hundred, three hundred ..., one thousand, two thousand... one million, one billion
+
+Die Zahlen in Deutsch: Ein, Zwai, Drei, Vier, Funf, Sechs, Sieben, Acht, Neun, Zehn ...
